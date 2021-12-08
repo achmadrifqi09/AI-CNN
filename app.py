@@ -21,12 +21,6 @@ def predict_label(img_path):
     predicted_bit = int(q_pred)
     return class_dict[predicted_bit]
 
-
-@app.route('/display/<filename>')
-def send_uploaded_image(filename=''):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -36,9 +30,12 @@ def index():
             image.save(img_path)
             prediction = predict_label(img_path)
             return render_template('index.html', uploaded_image=image.filename, prediction=prediction)
-
+            
     return render_template('index.html')
 
+@app.route('/display/<filename>')
+def send_uploaded_image(filename=''):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == '__main__':
     app.run(debug=True)
