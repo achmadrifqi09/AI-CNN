@@ -14,8 +14,6 @@
         <main class="flex flex-col justify-center items-center p-16 bg-white rounded-lg
                 ">
             <h1 class="text-3xl text-bold">Image Prediction</h1>
-            <h3>Achmad Rifqi Rosadi 2019-304</h3>
-            <h3>Ainun Najib 2019-335</h3>
 
             {% if uploaded_image %}
             <img src="{{ url_for('send_uploaded_image', filename=uploaded_image) }}" class="mt-8 mb-4 h-48 border-8 border-gray-200 rounded-md" /> {% else %}
